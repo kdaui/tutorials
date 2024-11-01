@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kdanga</title>
+</head>
+<style>
+	body {
+		background-color: #000;
+		color: #fff;
+		font-family: monospace;
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		min-height: 100vh;
+		margin: 0;
+		overflow-x: hidden;
+	}
+
+	.title {
+		text-align: center;
+		margin: 10px 0;
+	}
+
+	.title .logo-image {
+		width: 400px;
+		height: auto;
+		max-width: 100%;
+		position: relative;
+		z-index: 1;
+		animation: flicker1 1s infinite, flicker2 1.5s infinite 0.5s;
+		filter: contrast(1.2) saturate(1.5) brightness(0.9);
+	}
+
+	.title .logo-image::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(
+			0deg, 
+			rgba(255, 255, 255, 0.1) 1%, 
+			rgba(0, 0, 0, 0.1) 2%
+		);
+		background-size: 100% 2px;
+		z-index: 1;
+		mix-blend-mode: multiply;
+	}
+
+	.title .logo-image::after {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: radial-gradient(circle, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0.3) 100%);
+		z-index: 2;
+		pointer-events: none;
+	}
+
+	@keyframes flicker1 {
+		0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+			opacity: 1;
+			visibility: visible;
+		}
+		20%, 24%, 55% {
+			opacity: 0;
+			visibility: hidden;
+		}
+	}
+
+	@keyframes flicker2 {
+		0%, 18%, 20%, 22%, 24%, 52%, 54%, 100% {
+			opacity: 1;
+			visibility: visible;
+		}
+		19%, 21%, 23%, 53% {
+			opacity: 0;
+			visibility: hidden;
+		}
+	}
+
+	#blue {
+		color: #007BFF;
+	}
+	 
+	#grey {
+		color: #808080;
+	}
+
+	#yellow {
+		color: #ffd700;
+	}
+
+	#orange {
+		color: #ff8c00;
+	}
+
+	#sea {
+		color: #20b2aa;
+	}
+
+	#green {
+		color: #003300;
+	}
+
+	#red {
+		color: #d40000;
+	}
+
+	.main-container {
+		display: flex;
+		flex-direction: row;
+		width: 100%;
+		max-width: 1200px;
+		padding: 20px;
+		box-sizing: border-box;
+	}
+
+	.container {
+		flex: 3;
+		padding: 20px;
+		border: 1px solid #fff;
+		margin-right: 20px;
+		box-sizing: border-box;
+	}
+
+	.cont {
+		flex: 2;
+		padding: 20px;
+		border: 1px solid #fff;
+		box-sizing: border-box;
+	}
+
+	.content {
+		margin-bottom: 20px;
+	}
+
+	.about {
+		width: 100%;
+	}
+
+	.logo-image img {
+		border-radius: 0 !important;
+		width: 88px;
+		height: 31px;
+	}
+
+	.facts {
+		width: 100%;
+	}
+
+	.facts h2 {
+		font-size: 24px;
+		margin-bottom: 10px;
+	}
+
+	.facts ul {
+		list-style: none;
+		padding: 0;
+	}
+
+	.facts li {
+		margin-bottom: 5px;
+	}
+
+	.footer-container {
+		width: 100%;
+		padding: 20px;
+		border-top: 1px solid #fff;
+		box-sizing: border-box;
+		display: flex;
+		justify-content: center;
+	}
+
+	a {
+		color: inherit;
+		text-decoration: underline;
+	}
+
+	a:hover {
+		color: inherit;
+		text-decoration: underline;
+	}
+
+	.friend {
+		border: 1px solid #fff;
+		box-sizing: border-box;
+		margin-bottom: 20px;
+		width: 40%
+	}
+
+	.friend header {
+		margin-left: 200px;
+		position: relative;
+		top: -15px;
+		text-decoration: underline;
+	}
+
+	.friend marquee {
+		position: relative;
+		top: -20px;
+	}
+
+	.widget-container {
+		display: flex;
+		align-items: flex-start;
+	}
+
+
+	.chat {
+		border: 1px solid #fff;
+		box-sizing: border-box;
+		display: flex;
+		justify-content: flex-start;
+		margin-bottom: 20px;
+	}
+
+	.moon-widget {
+		border: 1px solid #fff;
+		box-sizing: border-box;
+		margin-left: 20px;
+	}
+
+	.hotlink {
+		border: 1px solid #fff;
+		padding: 10px;
+		margin-top: 20px;
+		box-sizing: border-box;
+		width: 60%;
+		text-align: center;
+	}
+
+
+	.hotlinked img {
+		width: 100%;
+		margin-bottom: 10px;
+	}
+
+	.hotlink-code {
+		width: 50%;
+		height: 60px;
+		background-color: #fff;
+		color: #000;
+		resize: none;
+	}
+
+	.moon-and-hotlink {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin-left: 20px;
+	}
+
+	.Projects {
+		flex: 1;
+		min-width: 10%;
+		padding: 10px;
+		border: 1px solid #fff;
+		box-sizing: border-box;
+	}
+
+	.Social-cont {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		width: 100%;
+		max-width: 500px;
+		padding: 20px;
+		box-sizing: border-box;
+		gap: 20px;
+	}
+
+	.last-fm {
+		flex: 1;
+		min-width: 50%;
+		padding-left: 10px;
+		border: 1px solid #fff;
+		box-sizing: border-box;
+		background-color: #000;
+		border-radius: 5px;
+		color: #fff;
+	}
+
+	.bsky {
+		flex: 1;
+		min-width: 60%;
+		padding-left: 10px;
+		border: 1px solid #fff;
+		box-sizing: border-box;
+		background-color: #000;
+		border-radius: 5px;
+		color: #fff;
+	}
+
+	.last-fm h3, .bsky h3 {
+		margin-bottom: 10px;
+		font-size: 18px;
+	}
+
+	.last-fm p, .bsky p {
+		font-size: 14px;
+		color: #ddd;
+	}
+</style>
+<body>
+    <div class="title">
+        <h1>Kdanga</h1>
+    </div>
+    <div class="main-container">
+        <div class="container">
+            <h1>How to Read Manga on Your Device</h1>
+            <div class="content">
+                <div class="about">
+                    <p>Welcome to the worst guide on manga you'll ever read. (There is no guidance here, use <a href="https://mihon.app/">Mihon's</a> instead as its the same with most apps.)</p>
+                </div>
+                <div class="tips">
+                    <h2>Recommended Apps</h2>
+					<h3>Android:</h3>
+					(Most need Android 6 or above):
+                    <ul>
+                        <li><a href="https://mihon.app/">Mihon</a> (Used to be called "Taichiyomi")</li>
+                        <li><a href="https://mihon.app/forks/TachiyomiSY/">TaichiyomiSY</a> (Mihon but with Hentai-focused features.)</li>
+                        <li><a href="https://mihon.app/forks/TachiyomiJ2K/">TaichiyomiJ2K</a> (Mihon but with a new design approach.)</li>
+                        <li><a href="https://github.com/null2264/yokai">Yokai</a> (Mihon but with features from a lot of forks put together.)</li>
+                        <li><a href="https://github.com/komikku-app/komikku">Komikku</a> (Provides new features but sometimes takes updates from other forks. Also based off Mihon.)</li>
+                        <li><a href="https://mihon.app/forks/TachiyomiAZ/">TachiyomiAZ</a> (Mihon but with Android 5+ support)</li>
+                        <li><a href="https://kotatsu.app/">Kokatsu</a> (Simple and convenient open-source manga reader. Not based on Mihon.)</li>
+                        <li><a href="https://dantotsuapp.netlify.app/">Dantotsu</a> (Open-source app for Anilist enthusiasts, inspired by Saikou and enhanced with Mihon extensions.)</li>
+                    </ul>
+					<h3>PC:</h3>
+					<ul>
+						<li><a href="https://houdoku.org/">Houdoku</a> (Free and open-source manga reader.)</li>
+						<li><a href="https://github.com/kodjodevf/mangayomi">Mangayomi</a> (Open-source manga reader inspired by Tachiyomi and Aniyomi.)</li>
+						<li><a href="https://github.com/Suwayomi/Suwayomi-Server">Suwayomi</a> (A rewrite of Tachiyomi for the Desktop.)</li>
+						<li><a href="https://github.com/darylhjd/mangadesk">Mangadesk</a> (Terminal client for MangaDex.)</li>
+						<li><a href="https://github.com/josueBarretogit/manga-tui">Manga-tui</a> (Terminal-based manga reader and downloader with image support)</li>
+						</ul>
+                </div>
+				<div class="fin">
+				<h3>Reading</h3>
+				<h4>(Read these sections after you've read both the extensions and sideloading section)</h4>
+				<ul>
+					<li>After having your extensions enabled, go to the search button on top of your library.</li>
+					<li>Search the manga you want to read and click on the source you want it from (Eg. Mangadex or Comick)</li>
+					<li>Now you can read the manga and put it into your library for later reading.</li>
+				</ul>
+				</div>
+				<div class="trouble">
+				<h3>Trouble finding a series?</h3>
+				<ul>
+					If you encounter difficulties while searching for a specific series, consider the following points:
+					<li>Double-check your spelling and try again, as some sources might use Japanese romanized titles instead of English ones:</li>
+					<li>Eg. Boku no Hero Academia instead of My Hero Academia.</li>
+					<li>Some sources may use different spellings or wordings for titles:</li>
+					<li>Eg. Bungo Stray Dogs instead of Bungou Stray Dogs.</li>
+					<li>Eg. 3-gatsu no Lion instead of Sangatsu no Lion.</li>
+				</ul>
+				</div>
+            </div>
+			<div class="errors">
+				<h3>Errors</h3>
+				<p>Look at <a href="https://mihon.app">Mihon's</a> error guide for help with error codes.</p>
+			</div>
+        </div>
+        <div class="cont">
+            <div class="Extensions">
+                <h2>Extensions</h2>
+                <ul>
+                    <li>Due to DMCA takedown notices, Tachiyomi (now continued as Mihon) no longer comes with preloaded extensions. You have to sideload extension repos in Mihon, Dantotsu, and their forks to get extensions.</li>
+					<li>Some apps might not support the Auto Install method. Try the manual method instead. If your app still isn't getting any extensions, try redoing the process again using a VPN.</li>
+                    <h2>Repo's:</h2>
+					<li><a href="https://keiyoushi.github.io/">Keiyoushi</a></li>
+                    <li><a href="https://github.com/Kareadita/tach-extension/">Kavita</a></li>
+                    <li><a href="https://github.com/Suwayomi/tachiyomi-extension">Suwayomi</a></li>
+                </ul>
+			</div>
+			<div class="sideload">
+				<h2>Sideloading Methods:</h2>
+				<h3>Adding Repo:</h3>
+				<ul>
+					<li>Auto: Click on Install and the repo will be sideloaded automatically.</li>
+					<li>Manual: Copy the URL (from the manual column) and put it in More -> Settings -> Browse -> Extension repos.</li>
+				</ul>
+			<h3>Adding Extensions</h3>
+			<ul>
+				<li>After adding the repo, go to Home -> Browse -> Anime/Manga Extension.</li>
+				<li>Get your desired extension by clicking <img src="images/download.png" width="20">.</li>
+				<li>Find it in the "Installed" section (at the top of the list) with <img src="images/x.png" width="20"> beside it.</li>
+				<li>The extension is disabled by default, so click on the <img src="images/check.png" width="20"> icon to enable it.</li>
+			</ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
