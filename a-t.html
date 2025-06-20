@@ -1,87 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bluesky Handle Setup</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-            padding: 20px;
-            background-color: #000;
-            color: #fff;
-            border: 2px solid #333;
-            border-radius: 10px;
-        }
-        h1 {
-            color: #fff;
-        }
-        ol {
-            padding-left: 20px;
-        }
-        code {
-            display: block;
-            background: #333;
-            color: #fff;
-            padding: 10px;
-            border-left: 5px solid #666;
-            margin-bottom: 10px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bsky Handle Setup</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 40px 20px;
+      background-color: #000;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-align: center;
+      letter-spacing: 0.05em;
+    }
+
+    p, li {
+      font-size: 1rem;
+      color: #ddd;
+    }
+
+    strong {
+      color: #fff;
+    }
+
+    ol {
+      padding-left: 20px;
+      margin-top: 20px;
+    }
+
+    ul {
+      list-style: circle;
+      margin-top: 5px;
+      margin-bottom: 15px;
+    }
+
+    code {
+      display: block;
+      background: #111;
+      color: #0ff;
+      padding: 12px;
+      border-left: 4px solid #1e90ff;
+      border-radius: 4px;
+      margin: 10px 0;
+      font-family: monospace;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #111;
+      padding: 30px;
+      border: 2px solid #333;
+      border-radius: 12px;
+      box-shadow: 0 0 10px #1e1e1e;
+    }
+  </style>
 </head>
 <body>
-    <h1>Setting Your Bluesky Handle to Your GitHub Pages Subdomain</h1>
-    <p>Follow these simple steps to set your Bluesky handle to your GitHub Pages subdomain (e.g., <strong>your-username.github.io</strong>):</p>
+  <div class="container">
+    <h1>Set Your Bluesky Handle to GitHub Pages</h1>
+
+    <p>
+      Follow these simple steps to set your Bluesky handle to your GitHub Pages subdomain (e.g., <strong>your-username.github.io</strong>):
+    </p>
+
     <ol>
-        <li><strong>Open Bluesky Settings:</strong>
-            <ul>
-                <li>Click on your profile picture thumbnail in the left menu and select "Settings."</li>
-                <li>Scroll down to the "Advanced" section and click "Change handle."</li>
-            </ul>
-        </li>
-        <li><strong>Enter Your Subdomain:</strong>
-            <ul>
-                <li>Choose "I have my own domain", then click on "No DNS Panel" and enter your subdomain (e.g., <strong>your-username.github.io</strong>).</li>
-                <li>Bluesky will provide you with a verification code.</li>
-            </ul>
-        </li>
-        <li><strong>Create a Well-Known Directory:</strong>
-            <ul>
-                <li>In your GitHub repository for your subdomain, create a <strong>.well-known</strong> directory in the root of the repository if it doesn't already exist.</li>
-            </ul>
-        </li>
-        <li><strong>Create Verification File:</strong>
-            <ul>
-                <li>Inside the <strong>.well-known</strong> directory, create a file named <strong>atproto-did</strong>.</li>
-            </ul>
-        </li>
-        <li><strong>Add Verification Code:</strong>
-            <ul>
-                <li>Edit the <strong>atproto-did</strong> file and add the following content:
-                    <code>
-                        did:plc:YOUR_VERIFICATION_CODE
-                    </code>
-                </li>
-            </ul>
-        </li>
-        <li><strong>Push Changes to GitHub:</strong>
-            <ul>
-                <li>Save the file and push your changes to GitHub. Make sure the file is accessible at:
-                    <code>
-                        https://your-username.github.io/.well-known/atproto-did
-                    </code>
-                </li>
-            </ul>
-        </li>
-        <li><strong>Verify on Bluesky:</strong>
-            <ul>
-                <li>Go back to Bluesky settings.</li>
-                <li>Click on "Verify Text File".</li>
-                <li>Bluesky will check the file content to verify your domain.</li>
-            </ul>
-        </li>
+      <li><strong>Open Bluesky Settings:</strong>
+        <ul>
+          <li>Click your profile picture and go to "Settings".</li>
+          <li>Scroll to "Advanced" → "Change handle".</li>
+        </ul>
+      </li>
+
+      <li><strong>Enter Your Subdomain:</strong>
+        <ul>
+          <li>Choose "I have my own domain", select "No DNS Panel", and type your subdomain like <strong>your-username.github.io</strong>.</li>
+          <li>Bluesky will give you a verification code.</li>
+        </ul>
+      </li>
+
+      <li><strong>Create a .well-known Folder:</strong>
+        <ul>
+          <li>In your GitHub repo, create a folder called <strong>.well-known</strong> in the root (if it doesn’t already exist).</li>
+        </ul>
+      </li>
+
+      <li><strong>Create the Verification File:</strong>
+        <ul>
+          <li>Inside <strong>.well-known</strong>, make a file named <strong>atproto-did</strong>.</li>
+        </ul>
+      </li>
+
+      <li><strong>Paste the Verification Code:</strong>
+        <ul>
+          <li>Open the file and paste your code like this:</li>
+        </ul>
+        <code>did:plc:YOUR_VERIFICATION_CODE</code>
+      </li>
+
+      <li><strong>Push to GitHub:</strong>
+        <ul>
+          <li>Save and push your changes to GitHub.</li>
+          <li>Make sure it's live at:</li>
+        </ul>
+        <code>https://your-username.github.io/.well-known/atproto-did</code>
+      </li>
+
+      <li><strong>Verify It on Bluesky:</strong>
+        <ul>
+          <li>Back in Bluesky, click "Verify Text File".</li>
+          <li>It'll check and confirm your domain.</li>
+        </ul>
+      </li>
     </ol>
-    <p>Once verified, your handle should be set to your GitHub Pages subdomain (e.g., <strong>@your-username.github.io</strong>).</p>
+
+    <p>
+      Once verified, your handle will be set to your GitHub Pages subdomain: <strong>@your-username.github.io</strong>
+    </p>
+  </div>
 </body>
 </html>
