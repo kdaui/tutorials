@@ -1,12 +1,48 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', sans-serif;
     background-color: #000;
     color: #FFF;
     text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
 h1 {
     margin-top: 20px;
+    font-weight: 700;
+    font-size: 2.5rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #FFF;
+}
+
+header {
+    background-color: #111;
+    padding: 20px;
+    box-shadow: 0 4px 2px -2px gray;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #FFF;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #FFD700;
 }
 
 .tutorials-container {
@@ -25,6 +61,8 @@ h1 {
     background-color: #111;
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .pirate-btn, .manga-btn, .atprotocol-btn {
@@ -36,8 +74,23 @@ h1 {
     cursor: pointer;
     font-weight: bold;
     text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-button:hover {
-    opacity: 0.8;
+.pirate-btn:hover {
+    background-color: #FFD700;
+    color: #000;
+}
+
+.manga-btn:hover {
+    background-color: #32CD32;
+    color: #FFF;
+}
+
+.atprotocol-btn:hover {
+    background-color: #1E90FF;
+    color: #FFF;
 }
