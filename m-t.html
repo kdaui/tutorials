@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K D A U I . — Manga Tutorial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&display=swap" rel="stylesheet">
+	<style>
+:root {
+  --primary-dark: #0A0F1C;
+  --secondary-dark: #141928;
+  --tertiary-dark: #1C2333;
+  --primary-blue: #1B3A5F;
+  --secondary-blue: #2C4E7C;
+  --accent-blue: #3D6299;
+  --light-accent: #5E8ABF;
+  --text-primary: #B8C5D6;
+  --text-secondary: #8A9BB3;
+  --accent-red: #8B2635;
+  --border-color: #2A3F5F;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Share Tech Mono', monospace;
+  background-color: var(--primary-dark);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.background-pattern {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(61, 98, 153, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(61, 98, 153, 0.05) 0%, transparent 50%),
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233D6299' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  z-index: -1;
+}
+
+.tutorial-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+}
+
+.back-home {
+  display: inline-block;
+  padding: 10px 15px;
+  background-color: rgba(28, 35, 51, 0.7);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--light-accent);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.back-home:hover {
+  background-color: rgba(61, 98, 153, 0.5);
+  color: var(--text-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(94, 138, 191, 0.2);
+}
+
+.tutorial-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.tutorial-title {
+  font-size: 4rem;
+  color: var(--light-accent);
+  margin-bottom: 10px;
+  text-shadow: 0 0 15px rgba(94, 138, 191, 0.3);
+  letter-spacing: 2px;
+  position: relative;
+  display: inline-block;
+}
+
+.tutorial-title::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 10%;
+  width: 80%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--light-accent), transparent);
+}
+
+.tutorial-subtitle {
+  font-size: 1.8rem;
+  color: var(--text-secondary);
+  margin-top: 20px;
+}
+
+.tutorial-intro {
+  background-color: rgba(28, 35, 51, 0.5);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 25px;
+  margin-bottom: 40px;
+  text-align: center;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.tutorial-content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.tutorial-section {
+  background-color: rgba(28, 35, 51, 0.5);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.tutorial-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-blue), var(--light-accent));
+}
+
+.section-title {
+  font-size: 2.2rem;
+  color: var(--light-accent);
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px rgba(94, 138, 191, 0.3);
+}
+
+.subsection-title {
+  font-size: 1.6rem;
+  color: var(--light-accent);
+  margin: 25px 0 15px;
+}
+
+.app-category {
+  margin-bottom: 40px;
+}
+
+.category-title {
+  font-size: 1.8rem;
+  color: var(--light-accent);
+  margin-bottom: 10px;
+  display: inline-block;
+  padding-bottom: 5px;
+  border-bottom: 2px solid var(--accent-blue);
+}
+
+.category-note {
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.app-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.app-item {
+  background-color: rgba(20, 25, 40, 0.7);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.app-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(94, 138, 191, 0.2);
+  border-color: var(--accent-blue);
+}
+
+.app-item h4 {
+  margin-bottom: 10px;
+}
+
+.app-item h4 a {
+  color: var(--light-accent);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.app-item h4 a:hover {
+  color: var(--text-primary);
+  text-shadow: 0 0 5px rgba(94, 138, 191, 0.5);
+}
+
+.note-box, .error-box {
+  background-color: rgba(20, 25, 40, 0.7);
+  border-left: 4px solid var(--accent-blue);
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 0 8px 8px 0;
+}
+
+.error-box {
+  border-left-color: var(--accent-red);
+}
+
+.instruction-list, .trouble-list, .method-list {
+  padding-left: 30px;
+  margin-bottom: 20px;
+}
+
+.instruction-list li, .trouble-list li, .method-list li {
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.extension-info {
+  margin-bottom: 25px;
+}
+
+.extension-info p {
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.repo-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.repo-item {
+  background-color: rgba(61, 98, 153, 0.3);
+  border: 1px solid var(--border-color);
+  border-radius: 30px;
+  padding: 10px 20px;
+  transition: all 0.3s ease;
+}
+
+.repo-item:hover {
+  background-color: rgba(61, 98, 153, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(94, 138, 191, 0.2);
+}
+
+.repo-item a {
+  color: var(--light-accent);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.repo-item a:hover {
+  color: var(--text-primary);
+}
+
+.sideload-method {
+  margin-bottom: 30px;
+}
+
+.method-title {
+  font-size: 1.6rem;
+  color: var(--light-accent);
+  margin-bottom: 15px;
+}
+
+.tutorial-footer {
+  text-align: center;
+  margin-top: 60px;
+  padding: 20px;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+a {
+  color: var(--light-accent);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--text-primary);
+  text-shadow: 0 0 5px rgba(94, 138, 191, 0.5);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .tutorial-container {
+    padding: 20px 15px;
+  }
+  
+  .tutorial-title {
+    font-size: 3rem;
+  }
+  
+  .tutorial-subtitle {
+    font-size: 1.5rem;
+  }
+  
+  .section-title {
+    font-size: 1.8rem;
+  }
+  
+  .app-list {
+    grid-template-columns: 1fr;
+  }
+  
+  .tutorial-section {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tutorial-title {
+    font-size: 2.5rem;
+  }
+  
+  .tutorial-subtitle {
+    font-size: 1.3rem;
+  }
+  
+  .section-title {
+    font-size: 1.6rem;
+  }
+  
+  .tutorial-section {
+    padding: 15px;
+  }
+  
+  .app-item {
+    padding: 15px;
+  }
+}
+	</style>
+</head>
+<body>
+    <div class="background-pattern"></div>
+    
+    <div class="tutorial-container">
+        <a href="index.html" class="back-home">← Back to Tutorials</a>
+        
+        <header class="tutorial-header">
+            <h1 class="tutorial-title">Kdanga</h1>
+            <div class="tutorial-subtitle">How to Read Manga on Your Device</div>
+        </header>
+        
+        <div class="tutorial-intro">
+            <p>Welcome to the worst guide on manga you'll ever read. (There is no guidance here, use <a href="https://mihon.app/">Mihon's</a> instead as its the same with most apps.)</p>
+        </div>
+        
+        <div class="tutorial-content">
+            <section class="tutorial-section">
+                <h2 class="section-title">Recommended Apps</h2>
+                
+                <div class="app-category">
+                    <h3 class="category-title">Android</h3>
+                    <p class="category-note">(Most need Android 6 or above)</p>
+                    <div class="app-list">
+                        <div class="app-item">
+                            <h4><a href="https://mihon.app/">Mihon</a></h4>
+                            <p>Used to be called "Taichiyomi"</p>
+                        </div>
+                        <div class="app-item">
+                            <h4><a href="https://mihon.app/forks/TachiyomiSY/">TaichiyomiSY</a></h4>
+                            <p>Mihon but with Hentai-focused features</p>
+                        </div>
+                        <div class="app-item">
+                            <h4><a href="https://mihon.app/forks/TachiyomiJ2K/">TaichiyomiJ2K</a></h4>
+                            <p>Mihon but with a new design approach</p>
+                        </div>
+                        <div class="app-item">
+                            <h4><a href="https://github.com/null2264/yokai">Yokai</a></h4>
+                            <p>Mihon but with features from a lot of forks put together</p>
+                        </div>
+                        <div class="app-item">
+                            <h4><a href="https://github.com/komikku-app/komikku">Komikku</a></h4>
+                            <p>Provides new features but sometimes takes updates from other forks. Also based off Mihon</p>
+                        </div>
+                        <div class="app-item">
+                            <h4><a href="https://mihon.app/forks/TachiyomiAZ/">TachiyomiAZ</a></h4>
+                            <p>Mihon but with Android 5+ support</p>
+                        </div>
+                        <div class="app-item">
+                            <h4><a href="https://kotatsu.app/">Kokatsu</a></h4>
+                            <p>Simple and convenient open-source manga reader. Not based on Mihon</p>
+                        </div>
+                        <div class="app-item">
+                            <h4><a href="https://dantotsuapp.netlify.app/">Dantotsu</a></h4>
+                            <p>Open-source app for Anilist enthusiasts, inspired by Saikou and enhanced with Mihon extensions</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="app-category">
+                    <h3 class="category-title">PC</h3>
+                    <div class="app-list">
+                        <div class="app-item">
+                            <h4><a href="https://houdoku.org/">Houdoku</a></h4>
+                            <p>Free and open-source manga reader</p>
+                        </div>
+                        <div class="app-item">
+                            <h4><a href="https://github.com/kodjodevf/mangayomi">Mangayomi</a></h4>
+                            <p>Open-source manga reader inspired by Tachiyomi and Aniyomi</p>
+                        </div>
+                        <div class="app-item">
+                            <h4><a href="https://github.com/Suwayomi/Suwayomi-Server">Suwayomi</a></h4>
+                            <p>A rewrite of Tachiyomi for the Desktop</p>
+                        </div>
+                        <div class="app-item">
+                            <h4><a href="https://github.com/darylhjd/mangadesk">Mangadesk</a></h4>
+                            <p>Terminal client for MangaDex</p>
+                        </div>
+                        <div class="app-item">
+                            <h4><a href="https://github.com/josueBarretogit/manga-tui">Manga-tui</a></h4>
+                            <p>Terminal-based manga reader and downloader with image support</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+			
+            <section class="tutorial-section">
+                <h2 class="section-title">Extensions</h2>
+                <div class="extension-info">
+                    <p>Due to DMCA takedown notices, Tachiyomi (now continued as Mihon) no longer comes with preloaded extensions. You have to sideload extension repos in Mihon, Dantotsu, and their forks to get extensions.</p>
+                    <p>Some apps might not support the Auto Install method. Try the manual method instead. If your app still isn't getting any extensions, try redoing the process again using a VPN.</p>
+                </div>
+                
+                <h3 class="subsection-title">Repo's:</h3>
+                <div class="repo-list">
+                    <div class="repo-item">
+                        <a href="https://keiyoushi.github.io/">Keiyoushi</a>
+                    </div>
+                    <div class="repo-item">
+                        <a href="https://github.com/Kareadita/tach-extension/">Kavita</a>
+                    </div>
+                    <div class="repo-item">
+                        <a href="https://github.com/Suwayomi/tachiyomi-extension">Suwayomi</a>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="tutorial-section">
+                <h2 class="section-title">Sideloading Methods</h2>
+                
+                <div class="sideload-method">
+                    <h3 class="method-title">Adding Repo:</h3>
+                    <ul class="method-list">
+                        <li>Auto: Click on Install and the repo will be sideloaded automatically.</li>
+                        <li>Manual: Copy the URL (from the manual column) and put it in More -> Settings -> Browse -> Extension repos.</li>
+                    </ul>
+                </div>
+                
+                <div class="sideload-method">
+                    <h3 class="method-title">Adding Extensions</h3>
+                    <ul class="method-list">
+                        <li>After adding the repo, go to Home -> Browse -> Anime/Manga Extension.</li>
+                        <li>Get your desired extension by clicking <img src="images/download.png" width="20" alt="Download icon">.</li>
+                        <li>Find it in the "Installed" section (at the top of the list) with <img src="images/x.png" width="20" alt="X icon"> beside it.</li>
+                        <li>The extension is disabled by default, so click on the <img src="images/check.png" width="20" alt="Check icon"> icon to enable it.</li>
+                    </ul>
+                </div>
+            </section>
+			
+			<section class="tutorial-section">
+                <h2 class="section-title">Reading Manga</h2>
+                <ol class="instruction-list">
+                    <li>After having your extensions enabled, go to the search button on top of your library.</li>
+                    <li>Search the manga you want to read and click on the source you want it from (Eg. Mangadex or Comick)</li>
+                    <li>Now you can read the manga and put it into your library for later reading.</li>
+                </ol>
+            </section>
+			
+			<section class="tutorial-section">
+                <h2 class="section-title">Trouble Finding a Series?</h2>
+                <p>If you encounter difficulties while searching for a specific series, consider the following points:</p>
+                <ul class="trouble-list">
+                    <li>Double-check your spelling and try again, as some sources might use Japanese romanized titles instead of English ones:</li>
+                    <li>Eg. Boku no Hero Academia instead of My Hero Academia.</li>
+                    <li>Some sources may use different spellings or wordings for titles:</li>
+                    <li>Eg. Bungo Stray Dogs instead of Bungou Stray Dogs.</li>
+                    <li>Eg. 3-gatsu no Lion instead of Sangatsu no Lion.</li>
+                </ul>
+            </section>
+            
+            <section class="tutorial-section">
+                <h2 class="section-title">Errors</h2>
+                <div class="error-box">
+                    <p>Look at <a href="https://mihon.app">Mihon's</a> error guide for help with error codes.</p>
+                </div>
+            </section>
+			
+        </div>
+        
+        <footer class="tutorial-footer">
+            "God's in his heaven. All's right with the world." - NERV
+        </footer>
+    </div>
+</body>
+</html>

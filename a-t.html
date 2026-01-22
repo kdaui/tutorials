@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K D A U I . — Bluesky Tutorial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary-dark: #0A0F1C;
+  --secondary-dark: #141928;
+  --tertiary-dark: #1C2333;
+  --primary-blue: #1B3A5F;
+  --secondary-blue: #2C4E7C;
+  --accent-blue: #3D6299;
+  --light-accent: #5E8ABF;
+  --text-primary: #B8C5D6;
+  --text-secondary: #8A9BB3;
+  --accent-red: #8B2635;
+  --border-color: #2A3F5F;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Share Tech Mono', monospace;
+  background-color: var(--primary-dark);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.background-pattern {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(61, 98, 153, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(61, 98, 153, 0.05) 0%, transparent 50%),
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233D6299' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  z-index: -1;
+}
+
+.tutorial-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+}
+
+.back-home {
+  display: inline-block;
+  padding: 10px 15px;
+  background-color: rgba(28, 35, 51, 0.7);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--light-accent);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.back-home:hover {
+  background-color: rgba(61, 98, 153, 0.5);
+  color: var(--text-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(94, 138, 191, 0.2);
+}
+
+.tutorial-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.tutorial-title {
+  font-size: 4rem;
+  color: var(--light-accent);
+  margin-bottom: 10px;
+  text-shadow: 0 0 15px rgba(94, 138, 191, 0.3);
+  letter-spacing: 2px;
+  position: relative;
+  display: inline-block;
+}
+
+.tutorial-title::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 10%;
+  width: 80%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--light-accent), transparent);
+}
+
+.tutorial-subtitle {
+  font-size: 1.8rem;
+  color: var(--text-secondary);
+  margin-top: 20px;
+}
+
+.tutorial-intro {
+  background-color: rgba(28, 35, 51, 0.5);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 25px;
+  margin-bottom: 40px;
+  text-align: center;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.tutorial-content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.steps-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.step {
+  display: flex;
+  gap: 20px;
+  background-color: rgba(28, 35, 51, 0.5);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 25px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.step:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(94, 138, 191, 0.2);
+  border-color: var(--accent-blue);
+}
+
+.step::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--accent-blue), var(--light-accent));
+}
+
+.step-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(61, 98, 153, 0.3);
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--light-accent);
+  flex-shrink: 0;
+}
+
+.step-content {
+  flex-grow: 1;
+}
+
+.step-title {
+  font-size: 1.6rem;
+  color: var(--light-accent);
+  margin-bottom: 15px;
+}
+
+.step-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.step-list li {
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.step-list li::before {
+  content: "▶";
+  position: absolute;
+  left: 0;
+  color: var(--accent-blue);
+}
+
+.code-block {
+  background-color: rgba(20, 25, 40, 0.7);
+  border-left: 4px solid var(--accent-blue);
+  border-radius: 0 8px 8px 0;
+  padding: 15px;
+  margin: 15px 0;
+  overflow-x: auto;
+}
+
+.code-block code {
+  display: block;
+  color: var(--light-accent);
+  font-family: 'Share Tech Mono', monospace;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.result-box {
+  background-color: rgba(61, 98, 153, 0.2);
+  border: 1px solid var(--accent-blue);
+  border-radius: 8px;
+  padding: 25px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.result-box h3 {
+  font-size: 1.6rem;
+  color: var(--light-accent);
+  margin-bottom: 15px;
+}
+
+.result-box p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+strong {
+  color: var(--light-accent);
+}
+
+.tutorial-footer {
+  text-align: center;
+  margin-top: 60px;
+  padding: 20px;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .tutorial-container {
+    padding: 20px 15px;
+  }
+  
+  .tutorial-title {
+    font-size: 3rem;
+  }
+  
+  .tutorial-subtitle {
+    font-size: 1.5rem;
+  }
+  
+  .step {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .step-number {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .tutorial-title {
+    font-size: 2.5rem;
+  }
+  
+  .tutorial-subtitle {
+    font-size: 1.3rem;
+  }
+  
+  .step-title {
+    font-size: 1.4rem;
+  }
+  
+  .step {
+    padding: 20px 15px;
+  }
+}
+</style>
+</head>
+<body>
+    <div class="background-pattern"></div>
+    
+    <div class="tutorial-container">
+        <a href="index.html" class="back-home">← Back to Tutorials</a>
+        
+        <header class="tutorial-header">
+            <h1 class="tutorial-title">Bluesky Handle Setup</h1>
+            <div class="tutorial-subtitle">Set Your Handle to GitHub Pages</div>
+        </header>
+        
+        <div class="tutorial-intro">
+            <p>Follow these simple steps to set your Bluesky handle to your GitHub Pages subdomain (e.g., <strong>your-username.github.io</strong>):</p>
+        </div>
+        
+        <div class="tutorial-content">
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Open Bluesky Settings</h3>
+                        <ul class="step-list">
+                            <li>Click your profile picture and go to "Settings"</li>
+                            <li>Scroll to "Advanced" → "Change handle"</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Enter Your Subdomain</h3>
+                        <ul class="step-list">
+                            <li>Choose "I have my own domain", select "No DNS Panel", and type your subdomain like <strong>your-username.github.io</strong></li>
+                            <li>Bluesky will give you a verification code</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Create a .well-known Folder</h3>
+                        <ul class="step-list">
+                            <li>In your GitHub repo, create a folder called <strong>.well-known</strong> in the root (if it doesn't already exist)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Create the Verification File</h3>
+                        <ul class="step-list">
+                            <li>Inside <strong>.well-known</strong>, make a file named <strong>atproto-did</strong></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Paste the Verification Code</h3>
+                        <ul class="step-list">
+                            <li>Open the file and paste your code like this:</li>
+                        </ul>
+                        <div class="code-block">
+                            <code>did:plc:YOUR_VERIFICATION_CODE</code>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">6</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Push to GitHub</h3>
+                        <ul class="step-list">
+                            <li>Save and push your changes to GitHub</li>
+                            <li>Make sure it's live at:</li>
+                        </ul>
+                        <div class="code-block">
+                            <code>https://your-username.github.io/.well-known/atproto-did</code>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">7</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Verify It on Bluesky</h3>
+                        <ul class="step-list">
+                            <li>Back in Bluesky, click "Verify Text File"</li>
+                            <li>It'll check and confirm your domain</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="result-box">
+                <h3>Result</h3>
+                <p>Once verified, your handle will be set to your GitHub Pages subdomain: <strong>@your-username.github.io</strong></p>
+            </div>
+        </div>
+        
+        <footer class="tutorial-footer">
+            "God's in his heaven. All's right with the world." - NERV
+        </footer>
+    </div>
+</body>
+</html>
