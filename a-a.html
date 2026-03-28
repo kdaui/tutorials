@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K D A U I . — Adobe Alternatives</title>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary-dark: #0A0F1C;
+  --secondary-dark: #141928;
+  --tertiary-dark: #1C2333;
+  --primary-blue: #1B3A5F;
+  --secondary-blue: #2C4E7C;
+  --accent-blue: #3D6299;
+  --light-accent: #5E8ABF;
+  --text-primary: #B8C5D6;
+  --text-secondary: #8A9BB3;
+  --accent-red: #8B2635;
+  --border-color: #2A3F5F;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Share Tech Mono', monospace;
+  background-color: var(--primary-dark);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.background-pattern {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(61, 98, 153, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(61, 98, 153, 0.05) 0%, transparent 50%),
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233D6299' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  z-index: -1;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+header {
+  text-align: center;
+  padding: 60px 0;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 40px;
+}
+
+h1 {
+  font-family: 'VT323', monospace;
+  font-size: 4rem;
+  color: var(--light-accent);
+  margin-bottom: 10px;
+  letter-spacing: 4px;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+.back-link {
+  color: var(--light-accent);
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 30px;
+  transition: color 0.2s;
+}
+
+.back-link:hover {
+  color: var(--accent-blue);
+}
+
+section {
+  margin-bottom: 50px;
+}
+
+h2 {
+  font-family: 'VT323', monospace;
+  font-size: 2.5rem;
+  color: var(--accent-blue);
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+h2 a {
+  color: var(--accent-blue);
+  text-decoration: none;
+}
+
+h2 a:hover {
+  color: var(--light-accent);
+}
+
+h3 {
+  font-size: 1.3rem;
+  color: var(--text-primary);
+  margin: 25px 0 15px 0;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--tertiary-dark);
+}
+
+li:last-child {
+  border-bottom: none;
+}
+
+a {
+  color: var(--light-accent);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: #fff;
+}
+
+.adobe-icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: var(--accent-red);
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 20px;
+  border-radius: 3px;
+  margin-right: 8px;
+  font-family: Arial, sans-serif;
+}
+
+.legend {
+  background: var(--secondary-dark);
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 40px;
+  border: 1px solid var(--border-color);
+}
+
+.legend p {
+  margin-bottom: 10px;
+}
+
+.legend span {
+  color: var(--light-accent);
+}
+
+.tool-list {
+  display: grid;
+  gap: 5px;
+}
+
+.tool-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 15px;
+  background: var(--secondary-dark);
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+}
+
+.tool-item:hover {
+  border-color: var(--accent-blue);
+}
+
+.tool-info {
+  flex: 1;
+}
+
+.tool-name {
+  color: var(--light-accent);
+  font-weight: bold;
+}
+
+.tool-platform {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.75rem;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+.badge-free {
+  background: rgba(46, 204, 113, 0.2);
+  color: #2ecc71;
+}
+
+.badge-paid {
+  background: rgba(241, 196, 15, 0.2);
+  color: #f1c40f;
+}
+
+.badge-sub {
+  background: rgba(155, 89, 182, 0.2);
+  color: #9b59b6;
+}
+
+.badge-trial {
+  background: rgba(52, 152, 219, 0.2);
+  color: #3498db;
+}
+
+.note {
+  background: var(--tertiary-dark);
+  padding: 15px 20px;
+  border-left: 3px solid var(--light-accent);
+  margin: 20px 0;
+  font-size: 0.95rem;
+}
+
+.note strong {
+  color: var(--light-accent);
+}
+
+footer {
+  text-align: center;
+  padding: 40px 0;
+  margin-top: 60px;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+footer a {
+  color: var(--text-secondary);
+}
+
+footer a:hover {
+  color: var(--light-accent);
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: var(--accent-blue);
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 1.5rem;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.back-to-top:hover {
+  opacity: 1;
+  color: white;
+}
+</style>
+</head>
+<body>
+  <div class="background-pattern"></div>
+  
+  <div class="container">
+    <header>
+      <h1>Adobe Alternatives</h1>
+      <p class="subtitle">Free your software, free your wallet</p>
+    </header>
+
+    <a href="index.html" class="back-link">&larr; Back to Tutorials</a>
+
+    <div class="legend">
+      <p><strong>Legend:</strong></p>
+      <p><span>✨</span> = Free and open-source</p>
+      <p><span>⭐</span> = Free of charge</p>
+      <p><span>💵</span> = Single purchase</p>
+      <p><span>🔒</span> = Subscription for more features</p>
+      <p><span>⌛</span> = Free trial</p>
+    </div>
+
+    <p class="note">
+      <strong>Note:</strong> These lists are ordered with free and open-source options on top, but they might not always be the best choice for your specific needs. Always try before you buy (or don't buy, since most have free tiers).
+    </p>
+
+    <section id="photoshop">
+      <h2><a href="#photoshop">Photoshop</a></h2>
+      
+      <h3>Photography</h3>
+      <div class="tool-list">
+        <div class="tool-item">
+          <div class="tool-info">
+            <a href="https://www.gimp.org" class="tool-name">GIMP</a>
+            <span class="badge badge-free">✨</span>
+            <p class="tool-platform">Windows, macOS, Linux</p>
+          </div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-info">
+            <a href="https://www.getpaint.net/" class="tool-name">Paint.NET</a>
+            <span class="badge badge-paid">⭐</span>
+            <p class="tool-platform">Windows</p>
+          </div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-info">
+            <a href="https://www.photopea.com" class="tool-name">Photopea</a>
+            <span class="badge badge-paid">⭐</span>
+            <p class="tool-platform">Browser</p>
+          </div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-info">
+            <a href="https://pixlr.com" class="tool-name">Pixlr</a>
+            <span class="badge badge-sub">🔒</span>
+            <p class="tool-platform">Browser</p>
+          </div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-info">
+            <a href="https://www.pixelmator.com/pro" class="tool-name">Pixelmator Pro</a>
+            <span class="badge badge-paid">💵</span>
+            <p class="tool-platform">macOS</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>Painting / Digital Art</h3>
+      <div class="tool-list">
+        <div class="tool-item">
+          <div class="tool-info">
+            <a href="https://krita.org" class="tool-name">Krita</a>
+            <span class="badge badge-free">✨</span>
+            <p class="tool-platform">Windows, macOS, Linux, Android</p>
+          </div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-info">
+            <a href="https://www.clipstudio.net" class="tool-name">Clip Studio Paint</a>
+            <span class="badge badge-sub">🔒</span>
+            <p class="tool-platform">Windows, macOS, Android, iOS</p>
+          </div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-info">
+            <a href="https://procreate.com" class="tool-name">Procreate</a>
+            <span class="badge badge-paid">💵</span>
+            <p class="tool-platform">iOS</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>Pixel Art</h3>
+      <div class="tool-list">
+        <div class="tool-item">
+          <div class="tool-info">
+            <a href="https://www.aseprite.org" class="tool-name">Aseprite</a>
+            <span class="badge badge-paid">✨</span>
+            <p class="tool-platform">Windows, macOS, Linux</p>
+          </div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-info">
+            <a href="https://orama-interactive.itch.io/pixelorama" class="tool-name">Pixelorama</a>
+            <span class="badge badge-free">✨</span>
+            <p class="tool-platform">Browser, Windows, macOS, Linux</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="illustrator">
+      <h2><a href="#illustrator">Illustrator</a></h2>
+      <div class="tool-list">
+        <div class="tool-item">
+          <div class="tool-info">
+            <a href="https://inkscape.org" class="tool-name">Inkscape</a>
+            <span class="badge badge-free">✨</span>
+            <p class="tool-platform">Windows, macOS, Linux</p>
+          </div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-info">
+            <a href="https://www.affinity.studio/" class="tool-name">Affinity Designer</a>
+            <span class="badge badge-sub">⭐</span>
+            <p class="tool-platform">Windows, macOS, iOS</p>
+          </div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-info">
+            <a href="https://vectormagic.com" class="tool-name">Vector Magic</a>
+            <span class="badge badge-paid">💵</span>
+            <p class="tool-platform">Windows, macOS, Linux</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="premiere">
+      <h2><a href="#premiere">Premiere (Video Editing)</a></h2>
+      <div class="tool-list">
+        <div class="tool-item">
+          <div class="tool-info">
+            <a href="https://www.blackmagicdesign.com/products/davinciresolve" class="tool-name">DaVinci Resolve</a>
+            <span class="badge badge-paid">⭐</span>
+            <p class="tool-platform">Windows, macOS, Linux</p>
+          </div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-info">
+            <a href="https://kdenlive.org" class="tool-name">Kdenlive</a>
+            <span class="badge badge-free">✨</span>
+            <p class="tool-platform">Windows, macOS, Linux</p>
+          </div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-info">
+            <a href="https://shotcut.org" class="tool-name">Shotcut</a>
+            <span class="badge badge-free">✨</span>
+            <p class="tool-platform">Windows, macOS, Linux</p>
+          </div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-info">
+            <a href="https://www.apple.com/final-cut-pro" class="tool-name">Final Cut Pro</a>
+            <span class="badge badge-paid">💵</span>
+            <p class="tool-platform">macOS</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="aftereffects">
+      <h2><a href="#aftereffects">After Effects</a></h2>
+      <div class="tool-list">
+        <div class="tool-item">
+          <div class="tool-info">
+            <a href="https://natrongithub.github.io" class="tool-name">Natron</a>
+            <span class="badge badge-free">✨</span>
+            <p class="tool-platform">Windows, macOS, Linux</p>
+          </div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-info">
+            <a href="https://www.blender.org" class="tool-name">Blender</a>
+            <span class="badge badge-free">✨</span>
+            <p class="tool-platform">Windows, macOS, Linux</p>
+          </div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-info">
+            <a href="https://cables.gl/" class="tool-name">Cables</a>
+            <span class="badge badge-free">✨</span>
+            <p class="tool-platform">Browser, Windows, macOS, Linux</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="lightroom">
+      <h2><a href="#lightroom">Lightroom (Photo Editing)</a></h2>
+      <div class="tool-list">
+        <div class="tool-item">
+          <div class="tool-info">
+            <a href="https://www.darktable.org" class="tool-name">Darktable</a>
+            <span class="badge badge-free">✨</span>
+            <p class="tool-platform">Windows, macOS, Linux</p>
+          </div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-info">
+            <a href="https://www.rawtherapee.com" class="tool-name">RawTherapee</a>
+            <span class="badge badge-free">✨</span>
+            <p class="tool-platform">Windows, macOS, Linux</p>
+          </div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-info">
+            <a href="https://www.digikam.org" class="tool-name">digiKam</a>
+            <span class="badge badge-free">✨</span>
+            <p class="tool-platform">Windows, macOS, Linux</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="xd">
+      <h2><a href="#xd">XD (UI/UX Design)</a></h2>
+      <div class="tool-list">
+        <div class="tool-item">
+          <div class="tool-info">
+            <a href="https://penpot.app" class="tool-name">Penpot</a>
+            <span class="badge badge-free">✨</span>
+            <p class="tool-platform">Windows, macOS, Linux</p>
+          </div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-info">
+            <a href="https://www.figma.com" class="tool-name">Figma</a>
+            <span class="badge badge-sub">⭐</span>
+            <p class="tool-platform">Browser, Windows, macOS</p>
+          </div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-info">
+            <a href="https://icons8.com/lunacy" class="tool-name">Lunacy</a>
+            <span class="badge badge-free">⭐</span>
+            <p class="tool-platform">Windows, macOS, Linux</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="acrobat">
+      <h2><a href="#acrobat">Acrobat (PDF)</a></h2>
+      <div class="tool-list">
+        <div class="tool-item">
+          <div class="tool-info">
+            <a href="https://www.sumatrapdfreader.org/free-pdf-reader" class="tool-name">Sumatra PDF</a>
+            <span class="badge badge-free">✨</span>
+            <p class="tool-platform">Windows</p>
+          </div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-info">
+            <a href="https://www.stirlingpdf.com/" class="tool-name">Stirling-PDF</a>
+            <span class="badge badge-free">✨</span>
+            <p class="tool-platform">Windows, macOS, Linux</p>
+          </div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-info">
+            <a href="https://www.libreoffice.org" class="tool-name">LibreOffice Draw</a>
+            <span class="badge badge-free">✨</span>
+            <p class="tool-platform">Windows, macOS, Linux</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="dreamweaver">
+      <h2><a href="#dreamweaver">Dreamweaver (Code Editor)</a></h2>
+      <div class="tool-list">
+        <div class="tool-item">
+          <div class="tool-info">
+            <a href="https://code.visualstudio.com" class="tool-name">Visual Studio Code</a>
+            <span class="badge badge-free">⭐</span>
+            <p class="tool-platform">Windows, macOS, Linux</p>
+          </div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-info">
+            <a href="https://vscodium.com" class="tool-name">VSCodium</a>
+            <span class="badge badge-free">✨</span>
+            <p class="tool-platform">Windows, macOS, Linux</p>
+          </div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-info">
+            <a href="https://pulsar-edit.dev" class="tool-name">Pulsar</a>
+            <span class="badge badge-free">✨</span>
+            <p class="tool-platform">Windows, macOS, Linux</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="audition">
+      <h2><a href="#audition">Audition (Audio Editing)</a></h2>
+      <div class="tool-list">
+        <div class="tool-item">
+          <div class="tool-info">
+            <a href="https://www.audacityteam.org" class="tool-name">Audacity</a>
+            <span class="badge badge-free">✨</span>
+            <p class="tool-platform">Windows, macOS, Linux</p>
+          </div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-info">
+            <a href="https://tenacityaudio.org" class="tool-name">Tenacity</a>
+            <span class="badge badge-free">✨</span>
+            <p class="tool-platform">Windows, Linux</p>
+          </div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-info">
+            <a href="https://www.reaper.fm" class="tool-name">REAPER</a>
+            <span class="badge badge-paid">💵</span>
+            <p class="tool-platform">Windows, macOS, Linux</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="animate">
+      <h2><a href="#animate">Animate (Animation)</a></h2>
+      <div class="tool-list">
+        <div class="tool-item">
+          <div class="tool-info">
+            <a href="https://www.synfig.org" class="tool-name">Synfig</a>
+            <span class="badge badge-free">✨</span>
+            <p class="tool-platform">Windows, macOS, Linux</p>
+          </div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-info">
+            <a href="https://tahoma2d.org" class="tool-name">Tahoma2D</a>
+            <span class="badge badge-free">✨</span>
+            <p class="tool-platform">Windows, macOS, Linux</p>
+          </div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-info">
+            <a href="https://www.pencil2d.org" class="tool-name">Pencil2D</a>
+            <span class="badge badge-free">✨</span>
+            <p class="tool-platform">Windows, macOS, Linux</p>
+          </div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-info">
+            <a href="https://www.toonboom.com" class="tool-name">Toon Boom</a>
+            <span class="badge badge-paid">💵</span>
+            <p class="tool-platform">Windows, macOS, Linux</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="indesign">
+      <h2><a href="#indesign">InDesign (Publishing)</a></h2>
+      <div class="tool-list">
+        <div class="tool-item">
+          <div class="tool-info">
+            <a href="https://www.scribus.net" class="tool-name">Scribus</a>
+            <span class="badge badge-free">✨</span>
+            <p class="tool-platform">Windows, macOS, Linux</p>
+          </div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-info">
+            <a href="https://www.affinity.studio/" class="tool-name">Affinity Publisher</a>
+            <span class="badge badge-free">⭐</span>
+            <p class="tool-platform">Windows, macOS, iOS</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>List originally collected by <a href="https://x.com/XdanielArt" target="_blank">@XdanielArt</a> and improved by the community.</p>
+      <p>Check out the <a href="https://github.com/KenneyNL/Adobe-Alternatives" target="_blank">full list on GitHub</a> for more alternatives.</p>
+      <p style="margin-top: 20px; opacity: 0.6;">GNU/Linux is the best.</p>
+    </footer>
+  </div>
+
+  <a href="#" class="back-to-top" title="Back to top">^</a>
+</body>
+</html>
