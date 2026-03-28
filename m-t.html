@@ -289,12 +289,28 @@ body {
 }
 
 .tutorial-footer {
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-top: 60px;
-  padding: 20px;
+  padding: 15px 20px;
   border-top: 1px solid var(--border-color);
   color: var(--text-secondary);
   font-style: italic;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tutorial-footer .footer-left {
+  flex: 1;
+  min-width: 200px;
+}
+
+.tutorial-footer .last-updated-date {
+  font-style: normal;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  opacity: 0.6;
 }
 
 a {
@@ -523,8 +539,8 @@ img {
         </div>
         
         <footer class="tutorial-footer">
-            <p>"God's in his heaven. All's right with the world." - NERV</p>
-            <p>Last updated: <span class="last-updated"></span></p>
+            <div class="footer-left">"God's in his heaven. All's right with the world." - NERV</div>
+            <span class="last-updated-date">Last updated: <span class="last-updated"></span></span>
         </footer>
     </div>
     <script>

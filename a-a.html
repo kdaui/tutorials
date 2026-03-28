@@ -266,12 +266,28 @@ footer a:hover {
 }
 
 .tutorial-footer {
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-top: 60px;
-  padding: 20px;
+  padding: 15px 20px;
   border-top: 1px solid var(--border-color);
   color: var(--text-secondary);
   font-style: italic;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tutorial-footer .footer-left {
+  flex: 1;
+  min-width: 200px;
+}
+
+.tutorial-footer .last-updated-date {
+  font-style: normal;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  opacity: 0.6;
 }
 
 .back-to-top {
@@ -686,9 +702,15 @@ footer a:hover {
     </section>
 
     <footer class="tutorial-footer">
-      <p style="margin-bottom: 20px;">List originally collected by <a href="https://github.com/KenneyNL/Adobe-Alternatives" target="_blank">@XdanielArt</a> and improved by the community.</p>
-      <p style="font-style: italic; font-size: 1.1rem;">"God's in his heaven. All's right with the world." -</p><p style="color: var(--text-secondary);"> NERV</p>
+      <div class="footer-left">
+        <p style="margin-bottom: 10px;">List originally collected by <a href="https://github.com/KenneyNL/Adobe-Alternatives" target="_blank">@XdanielArt</a> and improved by the community.</p>
+        <p style="font-style: italic;">"God's in his heaven. All's right with the world." - NERV</p>
+      </div>
+      <span class="last-updated-date">Last updated: <span class="last-updated"></span></span>
     </footer>
+    <script>
+      document.querySelector('.last-updated').textContent = new Date().toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
+    </script>
   </div>
 
   <a href="#" class="back-to-top" title="Back to top">^</a>
