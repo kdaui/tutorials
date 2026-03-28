@@ -226,23 +226,23 @@ body {
 }
 
 .site-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  position: relative;
   padding: 15px 20px;
   border-top: 1px solid var(--border-color);
   color: var(--text-secondary);
   font-style: italic;
   margin-top: auto;
-  flex-wrap: wrap;
-  gap: 10px;
 }
 
-.site-footer .footer-left {
-  text-align: left;
+.site-footer .footer-center {
+  text-align: center;
 }
 
 .site-footer .last-updated-date {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
   font-style: normal;
   font-size: 0.75rem;
   color: var(--text-secondary);

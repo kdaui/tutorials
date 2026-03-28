@@ -328,23 +328,23 @@ strong {
 }
 
 .tutorial-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  position: relative;
   margin-top: 60px;
   padding: 15px 20px;
   border-top: 1px solid var(--border-color);
   color: var(--text-secondary);
   font-style: italic;
-  flex-wrap: wrap;
-  gap: 10px;
 }
 
-.tutorial-footer .footer-left {
-  text-align: left;
+.tutorial-footer .footer-center {
+  text-align: center;
 }
 
 .tutorial-footer .last-updated-date {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
   font-style: normal;
   font-size: 0.75rem;
   color: var(--text-secondary);
@@ -611,7 +611,7 @@ strong {
         </div>
         
         <footer class="tutorial-footer">
-            <div class="footer-left">
+            <div class="footer-center">
               <p style="font-size: 0.85rem; margin-bottom: 10px;">Also see: <a href="a-a.html">Adobe Alternatives</a> — Free alternatives to Adobe software.</p>
               <p style="white-space: pre-wrap; font-size: 0.9rem; line-height: 1.4;">"I'd just like to interject for a moment. What you're referring to as Linux, is in fact, GNU/Linux, or as I've recently taken to calling it, GNU plus Linux. Linux is not an operating system unto itself, but rather another free component of a fully functioning GNU system made useful by the GNU corelibs, shell utilities and vital system components comprising a full OS as defined by POSIX. Many computer users run a modified version of the GNU system every day, without realizing it. Through a peculiar turn of events, the version of GNU which is widely used today is often called "Linux," and many of its users are not aware that it is basically the GNU system, developed by the GNU Project. There really is a Linux, and these people are using it, but it is just a part of the system they use.
 
