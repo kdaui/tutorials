@@ -226,28 +226,12 @@ body {
 }
 
 .site-footer {
-  position: relative;
+  text-align: center;
   padding: 15px 20px;
   border-top: 1px solid var(--border-color);
   color: var(--text-secondary);
   font-style: italic;
   margin-top: auto;
-}
-
-.site-footer .footer-center {
-  text-align: center;
-  padding-right: 120px;
-}
-
-.site-footer .last-updated-date {
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-style: normal;
-  font-size: 0.75rem;
-  color: var(--text-secondary);
-  opacity: 0.6;
 }
 
 /* Tutorial-specific color themes */
