@@ -340,16 +340,6 @@ strong {
   text-align: center;
 }
 
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-style: normal;
-  font-size: 0.75rem;
-  color: var(--text-secondary);
-  opacity: 0.6;
-}
-
 @media (max-width: 768px) {
   .tutorial-container {
     padding: 20px 15px;
@@ -445,28 +435,45 @@ strong {
                     <div class="step-number">2</div>
                     <div class="step-content">
                         <h3 class="step-title">Choose Your Distro</h3>
-                        <p>Here are some famous ones worth considering.</p>
-                        <div class="distro-grid">
-                            <div class="distro-item">
-                                <h4>Fedora</h4>
-                                <p>Sponsored by Red Hat. Gets new software and features fast — sometimes too fast. Good if you want something cutting-edge. GNOME is the default desktop environment. Pretty popular among developers and tech enthusiasts.</p>
+                        <p>Here are some famous ones worth considering. Click each one to expand.</p>
+                        
+                        <div class="accordion" style="margin-top: 20px;">
+                            <div class="accordion-item" style="border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 10px; overflow: hidden;">
+                                <button class="accordion-toggle" onclick="var c=this.nextElementSibling; c.style.display=c.style.display==='none'?'block':'none'; this.querySelectorAll('span')[1].textContent = this.querySelectorAll('span')[1].textContent === '+' ? '−' : '+';" style="width: 100%; padding: 15px; background: rgba(28, 35, 51, 0.5); border: none; color: var(--light-accent); font-family: inherit; font-size: 1.1rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+                                    <span>Fedora</span><span>+</span>
+                                </button>
+                                <div class="accordion-content" style="padding: 15px; background: rgba(20, 25, 40, 0.5); display: none;">
+                                    <p>Backed by Red Hat (a company that provides enterprise Linux support). Gets new software and features fast. Good if you want the newest stuff. GNOME is the default desktop environment. Pretty popular among developers and tech enthusiasts.</p>
+                                </div>
                             </div>
-                            <div class="distro-item">
-                                <h4>Ubuntu</h4>
-                                <p>The most popular Linux distro. Great for beginners with a huge community — if you run into problems, someone has already solved it. Based on Debian. GNOME desktop by default. Has flavors for KDE and XFCE if you want something different.</p>
+                            <div class="accordion-item" style="border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 10px; overflow: hidden;">
+                                <button class="accordion-toggle" onclick="var c=this.nextElementSibling; c.style.display=c.style.display==='none'?'block':'none'; this.querySelectorAll('span')[1].textContent = this.querySelectorAll('span')[1].textContent === '+' ? '−' : '+';" style="width: 100%; padding: 15px; background: rgba(28, 35, 51, 0.5); border: none; color: var(--light-accent); font-family: inherit; font-size: 1.1rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+                                    <span>Ubuntu</span><span>+</span>
+                                </button>
+                                <div class="accordion-content" style="padding: 15px; background: rgba(20, 25, 40, 0.5); display: none;">
+                                    <p>The most popular Linux distro. Great for beginners with a huge community — if you run into problems, someone has already solved it. Built on Debian (another popular distro). GNOME desktop by default. Has different versions with KDE and XFCE if you want something different.</p>
+                                </div>
                             </div>
-                            <div class="distro-item">
-                                <h4>Linux Mint</h4>
-                                <p>Based on Ubuntu so it inherits all the good stuff. Comes with Cinnamon by default which feels a lot like Windows. Really beginner-friendly if you want something that just works out of the box.</p>
+                            <div class="accordion-item" style="border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 10px; overflow: hidden;">
+                                <button class="accordion-toggle" onclick="var c=this.nextElementSibling; c.style.display=c.style.display==='none'?'block':'none'; this.querySelectorAll('span')[1].textContent = this.querySelectorAll('span')[1].textContent === '+' ? '−' : '+';" style="width: 100%; padding: 15px; background: rgba(28, 35, 51, 0.5); border: none; color: var(--light-accent); font-family: inherit; font-size: 1.1rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+                                    <span>Linux Mint</span><span>+</span>
+                                </button>
+                                <div class="accordion-content" style="padding: 15px; background: rgba(20, 25, 40, 0.5); display: none;">
+                                    <p>Built on Ubuntu so it inherits all the good stuff. Comes with Cinnamon by default which feels a lot like Windows. Really beginner-friendly if you want something that just works without any hassle.</p>
+                                </div>
                             </div>
-                            <div class="distro-item">
-                                <h4>Arch</h4>
-                                <p>Bleeding edge. You build everything from scratch — literally install each component yourself. Not for beginners. But if you want total control over your system and don't mind a learning curve, it's the most customizable distro out there. Also the basis for Manjaro and SteamOS.</p>
+                            <div class="accordion-item" style="border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 10px; overflow: hidden;">
+                                <button class="accordion-toggle" onclick="var c=this.nextElementSibling; c.style.display=c.style.display==='none'?'block':'none'; this.querySelectorAll('span')[1].textContent = this.querySelectorAll('span')[1].textContent === '+' ? '−' : '+';" style="width: 100%; padding: 15px; background: rgba(28, 35, 51, 0.5); border: none; color: var(--light-accent); font-family: inherit; font-size: 1.1rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+                                    <span>Arch</span><span>+</span>
+                                </button>
+                                <div class="accordion-content" style="padding: 15px; background: rgba(20, 25, 40, 0.5); display: none;">
+                                    <p>Uses the newest versions of software (less tested, more likely to have bugs). You build everything from scratch — literally install each component yourself. Not for beginners. But if you want total control over your system and don't mind a learning curve, it's the most customizable distro out there. Also the basis for Manjaro and SteamOS (other distros that use Arch as their base).</p>
+                                </div>
                             </div>
                         </div>
                         <div class="tip-box">
                             <h4>Fun Fact</h4>
-                            <p>I use Fedora on my Dell Latitude 5300. I basically chose it because Linus Torvalds (the guy who made the Linux kernel) uses it too. It was shown in the video where he and Linus Tech Tips made a computer together <a href="https://www.youtube.com/watch?v=mfv0V1SxbNA" style="color: inherit;">here</a>.</p>
+                            <p>I use Fedora on my Dell Latitude 5300. I basically chose it because Linus Torvalds (the guy who made the Linux kernel) uses it too. It was shown in the video where he and Linus Tech Tips made a computer together <a href="https://www.youtube.com/watch?v=mfv0V1SxbNA" style="color: inherit;">here</a>. In my opinion and experiences with Fedora, it has shown to be incredibly stable and great for me. It is still recommended to try other distros based on your needs.</p>
                         </div>
                     </div>
                 </div>
@@ -474,32 +481,13 @@ strong {
                 <div class="step">
                     <div class="step-number">3</div>
                     <div class="step-content">
-                        <h3 class="step-title">Installation</h3>
-                        <ul class="step-list">
-					        <li>Since each distro is different, I'll give instructions that would work with every distro (unfortunately in this case I do have to tell you that you should read the distro's <strong>wiki</strong> or installation instructions).</li>
-                            <li><strong>Download</strong> the ISO file from the distro's website</li>
-                            <li><strong>Create a bootable USB</strong> using <a href="https://etcher.balena.io/" style="color: var(--light-accent);">Balena Etcher</a> or <a href="https://rufus.ie/" style="color: var(--light-accent);">Rufus</a></li>
-                            <li><strong>Backup data</strong> before installing (seriously, do it)</li>
-                            <li><strong>Boot from the USB</strong> - You should search up how to get to the boot menu on your motherboard or laptop.</li>
-                            <li>Then follow the <strong>installer</strong>.</li>
-                        </ul>
-                        <div class="warning-box">
-                            <h4>Dual Booting</h4>
-                            <p>If you are going to install a Linux distro alongside Windows, be careful with partitioning. The installer may handle this automatically, but it may not depending on what distro you use.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <div class="step-content">
                         <h3 class="step-title">Understanding the Desktop Environment</h3>
                         <p>Different distros come with different "desktop environments" — basically how the desktop looks and feels.</p>
                         <ul class="step-list">
-                            <li><strong>GNOME</strong> — Modern, clean, default on Fedora/Ubuntu</li>
-                            <li><strong>KDE Plasma</strong> — Highly customizable, feature-rich</li>
-                            <li><strong>XFCE</strong> — Lightweight, fast, uses less RAM</li>
-                            <li><strong>Cinnamon</strong> — Feels like Windows, default on Linux Mint</li>
+                            <li><strong>GNOME</strong> — Modern and clean look, default on Fedora and Ubuntu</li>
+                            <li><strong>KDE Plasma</strong> — Very flexible, you can change almost everything about how it looks and works [This is the one I use and I really enjoy using it].</li>
+                            <li><strong>XFCE</strong> — Simple and lightweight, uses less memory so it runs faster on old computers</li>
+                            <li><strong>Cinnamon</strong> — Feels a lot like Windows, default on Linux Mint</li>
                         </ul>
                         <div class="tip-box">
                             <h4>Helpful info</h4>
@@ -509,10 +497,80 @@ strong {
                 </div>
                 
                 <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Installation</h3>
+                        <p>Let's break down each part of the installation process.</p>
+                        
+                        <h4 style="color: var(--light-accent); margin-top: 20px;">What is an ISO?</h4>
+                        <p>An ISO file (or disk image) is like a digital copy of a CD or DVD. It contains everything needed to install Linux — the operating system files, installer, and boot instructions. You download it from your distro's website as a single file (usually around 2-4GB).</p>
+                        
+                        <h4 style="color: var(--light-accent); margin-top: 20px;">What is a Bootable USB?</h4>
+                        <p>A bootable USB is a USB flash drive configured to start (boot) your computer into the Linux installer. Instead of installing from a CD, you plug in this USB and your computer starts Linux from it. This lets you try Linux without touching your hard drive (note: this depends on the distro supporting "live boot" — most popular ones like Ubuntu, Fedora, and Mint do).</p>
+                        
+                        <h4 style="color: var(--light-accent); margin-top: 20px;">The Process</h4>
+                        <ul class="step-list">
+                            <li><strong>Download</strong> the ISO file from your chosen distro's website</li>
+                            <li><strong>Create a bootable USB</strong> using <a href="https://etcher.balena.io/" style="color: var(--light-accent);">Balena Etcher</a> or <a href="https://rufus.ie/" style="color: var(--light-accent);">Rufus</a> — both are free and easy to use. Select your ISO, select your USB drive, and click Flash/Start.</li>
+                            <li><strong>Backup your data</strong> before installing (seriously, do it — having a backup is essential)</li>
+                            <li><strong>Boot from the USB</strong> — Restart your computer and press the boot key (see table below) to access the boot menu</li>
+                            <li>Then follow the <strong>installer</strong> on screen</li>
+                        </ul>
+                        
+                        <h4 style="color: var(--light-accent); margin-top: 20px;">Common Boot Menu Keys</h4>
+                        <div class="distro-grid" style="max-width: 500px;">
+                            <div class="distro-item">
+                                <h4>Dell</h4>
+                                <p>F12</p>
+                            </div>
+                            <div class="distro-item">
+                                <h4>HP</h4>
+                                <p>F9 or Esc</p>
+                            </div>
+                            <div class="distro-item">
+                                <h4>Lenovo</h4>
+                                <p>F12</p>
+                            </div>
+                            <div class="distro-item">
+                                <h4>ASUS</h4>
+                                <p>F8 or Esc</p>
+                            </div>
+                            <div class="distro-item">
+                                <h4>Acer</h4>
+                                <p>F12 or F2</p>
+                            </div>
+                            <div class="distro-item">
+                                <h4>MSI</h4>
+                                <p>F11</p>
+                            </div>
+                        </div>
+                        <div class="tip-box" style="margin-top: 15px;">
+                            <h4>Tip</h4>
+                            <p>If you're not sure, search "[your laptop model] boot menu key" on Google. Most modern computers also let you hold a specific key during startup to enter the boot menu.</p>
+                        </div>
+                        <div class="warning-box">
+                            <h4>Dual Booting</h4>
+                            <p>If you are going to install a Linux distro alongside Windows, be careful with partitioning. The installer may handle this automatically, but it may not depending on what distro you use. <strong>Partitioning</strong> is how we divide a hard drive into separate sections — each OS needs its own partition. The installer will usually show you options for this.</p>
+                        </div>
+                        
+                        <div class="tip-box">
+                            <h4>Alternative: Try Linux First</h4>
+                            <p>If you're not ready to install Linux directly on your computer, you can try it in a <strong>virtual machine (VM)</strong> — basically a computer running inside your computer. This lets you test Linux without touching your hard drive or setting up dual booting.</p>
+                            <p style="margin-top: 10px;">Popular VM software:</p>
+                            <ul class="step-list" style="margin-top: 5px;">
+                                <li><strong><a href="https://www.virtualbox.org/" style="color: var(--light-accent);">VirtualBox</a></strong> — Free and works on Windows, macOS, and Linux</li>
+                                <li><strong><a href="https://www.vmware.com/products/workstation-player.html" style="color: var(--light-accent);">VMware Workstation Player</a></strong> — Free for personal use</li>
+                            </ul>
+                            <p style="margin-top: 10px;">Note: Performance in a VM will be slower than running Linux directly, but it's the safest way to try it first.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
                     <div class="step-number">5</div>
                     <div class="step-content">
                         <h3 class="step-title">The Terminal</h3>
-                        <p>The terminal is a text-based way to control the computer and having some knowledge of it is recommended. It may seem scary at first, but it's great when you get the hang of it.</p>
+                        <p>The terminal is a text-based way to control the computer and having some knowledge of it is recommended. It may seem scary at first, but it's great when you get the hang of it. You can usually find it by searching for "Terminal" or "Konsole" in your apps menu.</p>
                         <div class="terminal-block">
                             <div><span class="prompt">user@fedora:~$</span> <span class="command">ls</span></div>
                             <div class="output">Documents  Downloads  Music  Pictures  Videos</div>
@@ -538,8 +596,11 @@ strong {
                             <div><span class="prompt">user@fedora:~$</span> <span class="command">sudo dnf update</span></div>
                             <div class="output"># Updates system packages</div>
                             <div><br></div>
-                            <div><span class="prompt">user@fedora:~$</span> <span class="command">sudo dnf install firefox</span></div>
-                            <div class="output"># Installs Firefox</div>
+                            <div><span class="prompt">user@fedora:~$</span> <span class="command">dnf search vlc</span></div>
+                            <div class="output"># Searches for "vlc" in available packages</div>
+                            <div><br></div>
+                            <div><span class="prompt">user@fedora:~$</span> <span class="command">sudo dnf install vlc</span></div>
+                            <div class="output"># Installs VLC player</div>
                             <div><br></div>
                             <div><span class="prompt">user@fedora:~$</span> <span class="command">man command-name</span></div>
                             <div class="output"># Shows manual for any command</div>
@@ -547,7 +608,8 @@ strong {
                         <ul class="step-list">
                             <li><strong>sudo</strong> — Run as administrator (root)</li>
                             <li><strong>dnf</strong> — Fedora's package manager (apt on Debian/Ubuntu)</li>
-                            <li><strong>dnf search</strong> — Search for packages</li>
+                            <li><strong>dnf search</strong> — Search for packages by name</li>
+                            <li><strong>dnf install</strong> — Install a package</li>
                             <li><strong>dnf remove</strong> — Uninstall packages</li>
                         </ul>
                         <div class="tip-box">
@@ -566,7 +628,7 @@ strong {
                             <li><strong>Package Manager</strong> — A GUI app to install/remove stuff easily</li>
                             <li><strong>Flatpak</strong> — Sandboxed apps that work across distros (basically like the Microsoft store but actually good and nice to use)</li>
                             <li><strong>Snap</strong> — Similar to Flatpak, mainly used on Ubuntu</li>
-                            <li>or <strong>Compiling from source</strong> — This is more rare nowadays, used mostly for devs but is still a viable option.</li>
+                            <li>or <strong>Compiling from source</strong> — Downloading the code and building it yourself. This is mostly for developers or very specific software. Most users will never need this.</li>
                         </ul>
                     </div>
                 </div>
@@ -583,6 +645,7 @@ strong {
                             <li><strong>/var</strong> — Variable files (logs, databases)</li>
                             <li><strong>/opt</strong> — Optional/third-party software</li>
                             <li><strong>/usr</strong> — User programs and libraries</li>
+                            <li><strong>Case sensitivity</strong> — Linux treats "File.txt" and "file.txt" as two completely different files. Commands and passwords are also case sensitive.</li>
                         </ul>
                         <div class="tip-box">
                             <h4>Your Home Directory</h4>
