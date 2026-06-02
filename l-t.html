@@ -327,6 +327,34 @@ strong {
   margin-bottom: 10px;
 }
 
+.distro-toggle {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.toggle-pill {
+  padding: 8px 20px;
+  background-color: rgba(28, 35, 51, 0.7);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.toggle-pill.active {
+  background-color: rgba(61, 98, 153, 0.4);
+  border-color: var(--accent-blue);
+  color: var(--light-accent);
+}
+
+.toggle-pill:hover {
+  border-color: var(--accent-blue);
+}
+
 .tutorial-footer {
   position: relative;
   margin-top: 60px;
@@ -473,7 +501,7 @@ strong {
                         </div>
                         <div class="tip-box">
                             <h4>Fun Fact</h4>
-                            <p>I use Fedora on my Dell Latitude 5300. I basically chose it because Linus Torvalds (the guy who made the Linux kernel) uses it too. It was shown in the video where he and Linus Tech Tips made a computer together <a href="https://www.youtube.com/watch?v=mfv0V1SxbNA" style="color: inherit;">here</a>. In my opinion and experiences with Fedora, it has shown to be incredibly stable and great for me. It is still recommended to try other distros based on your needs.</p>
+                            <p>I used to use Fedora on my Dell Latitude 5300, but now I'm using Arch with Hyprland on my framework. I started with Fedora because Linus Torvalds (the guy who made the Linux kernel) uses it — it was shown in a video where he and Linus Tech Tips made a computer together <a href="https://www.youtube.com/watch?v=mfv0V1SxbNA" style="color: inherit;">here</a>. Fedora is incredibly stable and a great starting point. That said, it's still recommended to try different distros based on your needs — each has its own strengths.</p>
                         </div>
                     </div>
                 </div>
@@ -572,11 +600,11 @@ strong {
                         <h3 class="step-title">The Terminal</h3>
                         <p>The terminal is a text-based way to control the computer and having some knowledge of it is recommended. It may seem scary at first, but it's great when you get the hang of it. You can usually find it by searching for "Terminal" or "Konsole" in your apps menu.</p>
                         <div class="terminal-block">
-                            <div><span class="prompt">user@fedora:~$</span> <span class="command">ls</span></div>
+                            <div><span class="prompt">user@linux:~$</span> <span class="command">ls</span></div>
                             <div class="output">Documents  Downloads  Music  Pictures  Videos</div>
                             <div><br></div>
-                            <div><span class="prompt">user@fedora:~$</span> <span class="command">cd Downloads</span></div>
-                            <div><span class="prompt">user@fedora:~/Downloads$</span> <span class="command">pwd</span></div>
+                            <div><span class="prompt">user@linux:~$</span> <span class="command">cd Downloads</span></div>
+                            <div><span class="prompt">user@linux:~/Downloads$</span> <span class="command">pwd</span></div>
                             <div class="output">/home/user/Downloads</div>
                         </div>
                         <ul class="step-list">
@@ -592,26 +620,58 @@ strong {
                     <div class="step-number">6</div>
                     <div class="step-content">
                         <h3 class="step-title">Essential Commands</h3>
-                        <div class="terminal-block">
-                            <div><span class="prompt">user@fedora:~$</span> <span class="command">sudo dnf update</span></div>
-                            <div class="output"># Updates system packages</div>
-                            <div><br></div>
-                            <div><span class="prompt">user@fedora:~$</span> <span class="command">dnf search vlc</span></div>
-                            <div class="output"># Searches for "vlc" in available packages</div>
-                            <div><br></div>
-                            <div><span class="prompt">user@fedora:~$</span> <span class="command">sudo dnf install vlc</span></div>
-                            <div class="output"># Installs VLC player</div>
-                            <div><br></div>
-                            <div><span class="prompt">user@fedora:~$</span> <span class="command">man command-name</span></div>
-                            <div class="output"># Shows manual for any command</div>
+                        <p>Package manager commands vary by distro. Select yours below:</p>
+                        <div class="distro-toggle">
+                            <button class="toggle-pill active" data-distro="fedora">Fedora (dnf)</button>
+                            <button class="toggle-pill" data-distro="arch">Arch (pacman)</button>
                         </div>
-                        <ul class="step-list">
-                            <li><strong>sudo</strong> — Run as administrator (root)</li>
-                            <li><strong>dnf</strong> — Fedora's package manager (apt on Debian/Ubuntu)</li>
-                            <li><strong>dnf search</strong> — Search for packages by name</li>
-                            <li><strong>dnf install</strong> — Install a package</li>
-                            <li><strong>dnf remove</strong> — Uninstall packages</li>
-                        </ul>
+
+                        <div class="fedora-block">
+                            <div class="terminal-block">
+                                <div><span class="prompt">user@fedora:~$</span> <span class="command">sudo dnf update</span></div>
+                                <div class="output"># Updates system packages</div>
+                                <div><br></div>
+                                <div><span class="prompt">user@fedora:~$</span> <span class="command">dnf search vlc</span></div>
+                                <div class="output"># Searches for "vlc" in available packages</div>
+                                <div><br></div>
+                                <div><span class="prompt">user@fedora:~$</span> <span class="command">sudo dnf install vlc</span></div>
+                                <div class="output"># Installs VLC player</div>
+                                <div><br></div>
+                                <div><span class="prompt">user@fedora:~$</span> <span class="command">man command-name</span></div>
+                                <div class="output"># Shows manual for any command</div>
+                            </div>
+                            <ul class="step-list">
+                                <li><strong>sudo</strong> — Run as administrator (root)</li>
+                                <li><strong>dnf</strong> — Fedora's package manager</li>
+                                <li><strong>dnf search</strong> — Search for packages by name</li>
+                                <li><strong>dnf install</strong> — Install a package</li>
+                                <li><strong>dnf remove</strong> — Uninstall packages</li>
+                            </ul>
+                        </div>
+
+                        <div class="arch-block" style="display: none;">
+                            <div class="terminal-block">
+                                <div><span class="prompt">user@arch:~$</span> <span class="command">sudo pacman -Syu</span></div>
+                                <div class="output"># Updates system packages</div>
+                                <div><br></div>
+                                <div><span class="prompt">user@arch:~$</span> <span class="command">pacman -Ss vlc</span></div>
+                                <div class="output"># Searches for "vlc" in available packages</div>
+                                <div><br></div>
+                                <div><span class="prompt">user@arch:~$</span> <span class="command">sudo pacman -S vlc</span></div>
+                                <div class="output"># Installs VLC player</div>
+                                <div><br></div>
+                                <div><span class="prompt">user@arch:~$</span> <span class="command">man command-name</span></div>
+                                <div class="output"># Shows manual for any command</div>
+                            </div>
+                            <ul class="step-list">
+                                <li><strong>sudo</strong> — Run as administrator (root)</li>
+                                <li><strong>pacman</strong> — Arch's package manager</li>
+                                <li><strong>pacman -Ss</strong> — Search for packages by name</li>
+                                <li><strong>pacman -S</strong> — Install a package</li>
+                                <li><strong>pacman -R</strong> — Uninstall packages</li>
+                            </ul>
+                        </div>
+
                         <div class="tip-box">
                             <h4>Helpful Information</h4>
                             <p>Type <code>man</code> before any command to learn what it does. Example: <code>man ls</code></p>
@@ -660,8 +720,8 @@ strong {
                         <h3 class="step-title">Where to Get Help</h3>
                         <ul class="step-list">
                             <li>The <strong>Arch Wiki</strong> — It has some of the best Linux documentation out there. Even if you don't use Arch it can be useful.</li>
-                            <li>Using <strong>subreddits and forums</strong> — Either search for a solution to your issue or pray that you can solve it yourself. I do recommend searching for a bit since Stack Overflow basically has the answers to anything imaginable.
-                        </ul>
+                             <li>Using <strong>subreddits and forums</strong> — Either search for a solution to your issue or pray that you can solve it yourself. I do recommend searching for a bit since Stack Overflow basically has the answers to anything imaginable.</li>
+                         </ul>
                     </div>
                 </div>
             </div>
@@ -681,8 +741,20 @@ Linux is the kernel: the program in the system that allocates the machine's reso
         </footer>
     </div>
     <script>
+        document.querySelectorAll('.toggle-pill').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var parent = this.closest('.step-content');
+                parent.querySelectorAll('.toggle-pill').forEach(function(p) { p.classList.remove('active'); });
+                this.classList.add('active');
+                var blocks = parent.querySelectorAll('.fedora-block, .arch-block');
+                blocks.forEach(function(b) { b.style.display = 'none'; });
+                parent.querySelector('.' + this.dataset.distro + '-block').style.display = '';
+            });
+        });
+    </script>
+    <script>
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/tutorials/sw.js').then(() => {});
+            navigator.serviceWorker.register('/tutorials/sw.js').then(function() {});
         }
     </script>
 </body>
